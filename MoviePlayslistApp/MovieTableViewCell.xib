@@ -69,7 +69,7 @@
                                             <imageReference key="image" image="star" catalog="system" renderingMode="original"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="addToPlaylisAction:" destination="5DR-uW-QEy" eventType="touchUpInside" id="B91-TV-Zyo"/>
+                                            <action selector="addToPlaylistAction:" destination="5DR-uW-QEy" eventType="touchUpInside" id="un3-hZ-Cgv"/>
                                         </connections>
                                     </button>
                                 </subviews>
