@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="RobotoSlab-Bold.ttf">
+            <string>RobotoSlab-Bold</string>
+        </array>
+        <array key="RobotoSlab-Light.ttf">
+            <string>RobotoSlab-Light</string>
+        </array>
+        <array key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="255" id="5DR-uW-QEy" userLabel="MovieTableViewCell" customClass="MovieTableViewCell" customModule="MoviePlayslistApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="255"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5DR-uW-QEy" id="r2A-G4-bZW">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="255"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixB-Zi-FuG">
+                        <rect key="frame" x="20" y="0.0" width="370" height="245"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultNews" translatesAutoresizingMaskIntoConstraints="NO" id="2YC-up-tJJ">
+                                <rect key="frame" x="0.0" y="0.0" width="370" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="mGA-hQ-ZPz"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVX-hA-BjL">
+                                <rect key="frame" x="0.0" y="175" width="370" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="No Time To Die" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-n5-LCa">
+                                        <rect key="frame" x="15.999999999999993" y="10.000000000000002" width="109.33333333333331" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="16"/>
+                                        <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Rating - 7.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goo-If-YZ0">
+                                        <rect key="frame" x="16" y="33.666666666666657" width="63" height="14"/>
+                                        <fontDescription key="fontDescription" name="RobotoSlab-Light" family="Roboto Slab" pointSize="12"/>
+                                        <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist 8" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNW-G0-b1y">
+                                        <rect key="frame" x="16" y="52.666666666666657" width="40" height="11.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="10"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vnl-t8-o0Y">
+                                        <rect key="frame" x="314" y="17" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="ejQ-Kw-EqL"/>
+                                            <constraint firstAttribute="width" constant="36" id="r56-n6-XnN"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="star" catalog="system" renderingMode="original"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addToPlaylisAction:" destination="5DR-uW-QEy" eventType="touchUpInside" id="B91-TV-Zyo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstItem="CKp-n5-LCa" firstAttribute="top" secondItem="aVX-hA-BjL" secondAttribute="top" constant="10" id="3Us-bB-kvA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vnl-t8-o0Y" secondAttribute="trailing" constant="20" id="3s7-Ff-TpU"/>
+                                    <constraint firstItem="HNW-G0-b1y" firstAttribute="leading" secondItem="goo-If-YZ0" secondAttribute="leading" id="BWJ-ll-zEg"/>
+                                    <constraint firstItem="Vnl-t8-o0Y" firstAttribute="top" secondItem="aVX-hA-BjL" secondAttribute="top" constant="17" id="Haw-zh-Cib"/>
+                                    <constraint firstAttribute="height" constant="70" id="QcK-bQ-urU"/>
+                                    <constraint firstItem="HNW-G0-b1y" firstAttribute="top" secondItem="goo-If-YZ0" secondAttribute="bottom" constant="5" id="bGE-Em-kQg"/>
+                                    <constraint firstItem="goo-If-YZ0" firstAttribute="leading" secondItem="CKp-n5-LCa" secondAttribute="leading" id="bI9-ZS-Vzn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vnl-t8-o0Y" secondAttribute="bottom" constant="17" id="caf-aO-Xqc"/>
+                                    <constraint firstItem="CKp-n5-LCa" firstAttribute="leading" secondItem="aVX-hA-BjL" secondAttribute="leading" constant="16" id="dpL-cl-H3C"/>
+                                    <constraint firstItem="Vnl-t8-o0Y" firstAttribute="centerY" secondItem="aVX-hA-BjL" secondAttribute="centerY" id="jh5-9I-aOn"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HNW-G0-b1y" secondAttribute="bottom" constant="5" id="kEE-i9-9GD"/>
+                                    <constraint firstItem="goo-If-YZ0" firstAttribute="top" secondItem="CKp-n5-LCa" secondAttribute="bottom" constant="5" id="rYz-vf-d9H"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aVX-hA-BjL" firstAttribute="leading" secondItem="ixB-Zi-FuG" secondAttribute="leading" id="Dof-O1-nWJ"/>
+                            <constraint firstItem="aVX-hA-BjL" firstAttribute="top" secondItem="2YC-up-tJJ" secondAttribute="bottom" id="EcK-ng-acj"/>
+                            <constraint firstAttribute="trailing" secondItem="2YC-up-tJJ" secondAttribute="trailing" id="X9E-Lz-pSM"/>
+                            <constraint firstItem="2YC-up-tJJ" firstAttribute="leading" secondItem="ixB-Zi-FuG" secondAttribute="leading" id="bKE-j0-8kA"/>
+                            <constraint firstItem="2YC-up-tJJ" firstAttribute="top" secondItem="ixB-Zi-FuG" secondAttribute="top" id="jQi-PP-NXE"/>
+                            <constraint firstAttribute="trailing" secondItem="aVX-hA-BjL" secondAttribute="trailing" id="mSP-2E-9p1"/>
+                            <constraint firstAttribute="bottom" secondItem="aVX-hA-BjL" secondAttribute="bottom" id="wV4-GX-VRc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ixB-Zi-FuG" secondAttribute="trailing" constant="20" id="7rC-br-ahz"/>
+                    <constraint firstItem="ixB-Zi-FuG" firstAttribute="leading" secondItem="r2A-G4-bZW" secondAttribute="leading" constant="20" id="VWS-r1-BTl"/>
+                    <constraint firstAttribute="bottom" secondItem="ixB-Zi-FuG" secondAttribute="bottom" constant="10" id="X4j-ne-nBX"/>
+                    <constraint firstItem="ixB-Zi-FuG" firstAttribute="top" secondItem="r2A-G4-bZW" secondAttribute="top" id="wf3-nb-Lvl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="addToPlaylistButton" destination="Vnl-t8-o0Y" id="FJF-BA-L1P"/>
+                <outlet property="bgView" destination="ixB-Zi-FuG" id="XDE-Sm-m1W"/>
+                <outlet property="bottomView" destination="aVX-hA-BjL" id="USc-iu-sk0"/>
+                <outlet property="movieImageView" destination="2YC-up-tJJ" id="aGK-Vd-OUQ"/>
+                <outlet property="movieNameLabel" destination="CKp-n5-LCa" id="2pG-hG-oI8"/>
+                <outlet property="playlistNameLabel" destination="HNW-G0-b1y" id="21M-LJ-qKW"/>
+                <outlet property="ratingLabel" destination="goo-If-YZ0" id="ida-5l-XG1"/>
+            </connections>
+            <point key="canvasLocation" x="-9.1603053435114496" y="-130.98591549295776"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="defaultNews" width="137.5" height="91.5"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
