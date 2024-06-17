@@ -48,6 +48,23 @@ class MoviesListViewController: UIViewController {
         presentActionSheet(forActions: availableActions, senderView: sender)
     }
     
+    
+//    @IBAction func filterMoviesPlayListAction(_ sender: UIButton) {
+//        showBottomSheet()
+//    }
+//        
+//    private func showBottomSheet() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let bottomSheetVC = storyboard.instantiateViewController(withIdentifier: "PlaylistBottomSheetViewController") as? PlaylistBottomSheetViewController else { return }
+//        bottomSheetVC.delegate = self
+//        bottomSheetVC.playlists = viewModel.movieService.getPlaylists()
+//
+//        if let sheet = bottomSheetVC.sheetPresentationController {
+//            sheet.detents = [.medium()]
+//        }
+//        present(bottomSheetVC, animated: true)
+//    }
+    
     private func presentActionSheet(forActions actionList: [String], senderView: UIView) {
         let alertController = UIAlertController(title: "Select Playlist", message: nil, preferredStyle: .actionSheet)
         
@@ -150,4 +167,28 @@ extension MoviesListViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+ 
+
+    
 }
+
+//extension MoviesListViewController: PlaylistBottomSheetDelegate {
+//    func didSelectPlaylist(_ playlist: String) {
+//        viewModel.filterMovies(by: playlist)
+//    }
+//    
+//    func didTapAddNewPlaylist() {
+//        let alert = UIAlertController(title: "New Playlist", message: "Enter a name for your new playlist", preferredStyle: .alert)
+//        alert.addTextField { textField in
+//            textField.placeholder = "Playlist Name"
+//        }
+//        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+//            guard let playlistName = alert.textFields?.first?.text, !playlistName.isEmpty else { return }
+//            self?.viewModel.addNewPlaylist(named: playlistName)
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//        alert.addAction(saveAction)
+//        alert.addAction(cancelAction)
+//        present(alert, animated: true)
+//    }
+//}
