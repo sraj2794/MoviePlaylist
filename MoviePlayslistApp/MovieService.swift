@@ -12,6 +12,7 @@ protocol MovieServiceProtocol {
     func addToPlaylist(movie: Movie, playlistName: String, completion: @escaping (Result<Void, Error>) -> Void)
     func getPlaylists() -> [String]
     func getMovies(forPlaylist playlistName: String) -> [Movie]
+    func createPlaylist(named playlistName: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class MovieService: MovieServiceProtocol {
@@ -23,27 +24,6 @@ class MovieService: MovieServiceProtocol {
         self.networkManager = networkManager
     }
     
-//    func fetchPopularMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
-//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=38a73d59546aa378980a88b645f487fc") else {
-//            return
-//        }
-//        
-//        networkManager.makeRequest(url: url, completion: completion)
-//    }
-    
-//    func fetchPopularMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
-//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=38a73d59546aa378980a88b645f487fc") else {
-//            let error = NSError(domain: "Invalid URL", code: 0, userInfo: nil)
-//            completion(.failure(error))
-//            return
-//        }
-//        
-//        // Specify Q as [Movie].self when calling makeRequest
-//        networkManager.makeRequest(url: url) { (result: Result<[Movie], Error>) in
-//            completion(result)
-//        }
-//    }
-
     func fetchPopularMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=38a73d59546aa378980a88b645f487fc") else {
             let error = NSError(domain: "Invalid URL", code: 0, userInfo: nil)
@@ -60,7 +40,6 @@ class MovieService: MovieServiceProtocol {
             }
         }
     }
-
     
     func addToPlaylist(movie: Movie, playlistName: String, completion: @escaping (Result<Void, Error>) -> Void) {
         if playlists[playlistName] != nil {
@@ -77,6 +56,16 @@ class MovieService: MovieServiceProtocol {
     
     func getMovies(forPlaylist playlistName: String) -> [Movie] {
         return playlists[playlistName] ?? []
+    }
+    
+    func createPlaylist(named playlistName: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        if playlists[playlistName] == nil {
+            playlists[playlistName] = []
+            completion(.success(()))
+        } else {
+            let error = NSError(domain: "Playlist already exists", code: 1, userInfo: nil)
+            completion(.failure(error))
+        }
     }
 }
 

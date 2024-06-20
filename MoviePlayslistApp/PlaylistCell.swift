@@ -2,13 +2,15 @@
 //  PlaylistCell.swift
 //  MoviePlayslistApp
 //
-//  Created by Raj Shekhar on 17/06/24.
+//  Created by Raj Shekhar on 20/06/24.
 //
 
 import UIKit
 
 class PlaylistCell: UITableViewCell {
 
+    @IBOutlet weak var playListLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -31,11 +31,11 @@ class MovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(with movie: Movie) {
+    func configure(with movie: Movie, playlists: [String]) {
         movieNameLabel.text = movie.title
         ratingLabel.text = "\(movie.voteAverage)"
         //playlistNameLabel.text = movie.playlistName ?? "No Playlist"
-
+        playlistNameLabel.text = playlists.joined(separator: ", ")
         // Check if posterPath exists and construct URL
         if let posterPath = movie.posterPath, let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") {
             // Load image from URL

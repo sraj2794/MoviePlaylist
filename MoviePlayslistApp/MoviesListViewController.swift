@@ -12,7 +12,8 @@ class MoviesListViewController: UIViewController {
     @IBOutlet weak var movieListTableView: UITableView!
     
     private var viewModel: MoviesViewModelProtocol!
-    
+    private var selectedMovie: Movie?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         movieListTableView.delegate = self
@@ -44,69 +45,30 @@ class MoviesListViewController: UIViewController {
     }
     
     @IBAction func filterMoviesPlayListAction(_ sender: UIButton) {
-        let availableActions = viewModel.getPlaylists() + ["Add New Playlist"]
-        presentActionSheet(forActions: availableActions, senderView: sender)
+        showBottomSheet()
     }
     
-    
-//    @IBAction func filterMoviesPlayListAction(_ sender: UIButton) {
-//        showBottomSheet()
-//    }
-//        
-//    private func showBottomSheet() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        guard let bottomSheetVC = storyboard.instantiateViewController(withIdentifier: "PlaylistBottomSheetViewController") as? PlaylistBottomSheetViewController else { return }
-//        bottomSheetVC.delegate = self
-//        bottomSheetVC.playlists = viewModel.movieService.getPlaylists()
-//
-//        if let sheet = bottomSheetVC.sheetPresentationController {
-//            sheet.detents = [.medium()]
-//        }
-//        present(bottomSheetVC, animated: true)
-//    }
-    
-    private func presentActionSheet(forActions actionList: [String], senderView: UIView) {
-        let alertController = UIAlertController(title: "Select Playlist", message: nil, preferredStyle: .actionSheet)
-        
-        for actionTitle in actionList {
-            let action = UIAlertAction(title: actionTitle, style: .default) { [weak self] action in
-                self?.sortSelectionHandler(action: action)
-            }
-            alertController.addAction(action)
+    private func showBottomSheet() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let bottomSheetVC = storyboard.instantiateViewController(withIdentifier: "PlaylistBottomSheetViewController") as? PlaylistBottomSheetViewController else { return }
+        bottomSheetVC.delegate = self
+        bottomSheetVC.playlists = viewModel.getPlaylists()
+
+        if let sheet = bottomSheetVC.sheetPresentationController {
+            sheet.detents = [.custom { context in
+                let topInset: CGFloat = 10
+                let bottomInset: CGFloat = 10
+                let rowHeight: CGFloat = 44
+                let contentHeight = CGFloat(bottomSheetVC.playlists.isEmpty ? 1 : bottomSheetVC.playlists.count + 1) * rowHeight + topInset + bottomInset
+                let maxHeight: CGFloat = 300
+                return min(contentHeight, maxHeight)
+            }]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.largestUndimmedDetentIdentifier = .medium
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(cancelAction)
-        
-        alertController.popoverPresentationController?.sourceView = senderView
-        alertController.popoverPresentationController?.sourceRect = senderView.bounds
-        
-        present(alertController, animated: true)
+        present(bottomSheetVC, animated: true)
     }
-    
-    private func sortSelectionHandler(action: UIAlertAction) {
-        guard let actionTitle = action.title else { return }
-        if actionTitle == "Add New Playlist" {
-            showAddPlaylistAlert()
-        } else {
-            viewModel.filterMovies(by: actionTitle)
-        }
-    }
-    
-    private func showAddPlaylistAlert() {
-        let alert = UIAlertController(title: "New Playlist", message: "Enter a name for your new playlist", preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = "Playlist Name"
-        }
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
-            guard let playlistName = alert.textFields?.first?.text, !playlistName.isEmpty else { return }
-            self?.viewModel.addNewPlaylist(named: playlistName)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
-    }
+
 }
 
 // MARK: - UITableViewDelegate and UITableViewDataSource
@@ -124,10 +86,11 @@ extension MoviesListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
         
         let movie = viewModel.movies[indexPath.row]
-        cell.configure(with: movie)
+        cell.configure(with: movie, playlists: viewModel.getPlaylists())
         
         cell.addToPlaylistAction = { [weak self] in
-            self?.showAddToPlaylistActionSheet(for: movie, senderView: cell.addToPlaylistButton)
+            self?.selectedMovie = movie
+            self?.showBottomSheet()
         }
         
         return cell
@@ -136,59 +99,20 @@ extension MoviesListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    private func showAddToPlaylistActionSheet(for movie: Movie, senderView: UIView) {
-        let availableActions = viewModel.getPlaylists() + ["Add New Playlist"]
-        let alertController = UIAlertController(title: "Add to Playlist", message: nil, preferredStyle: .actionSheet)
-        
-        for actionTitle in availableActions {
-            let action = UIAlertAction(title: actionTitle, style: .default) { [weak self] action in
-                self?.addMovieToPlaylistHandler(action: action, movie: movie)
-            }
-            alertController.addAction(action)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(cancelAction)
-        
-        alertController.popoverPresentationController?.sourceView = senderView
-        alertController.popoverPresentationController?.sourceRect = senderView.bounds
-        
-        present(alertController, animated: true)
-    }
-    
-    private func addMovieToPlaylistHandler(action: UIAlertAction, movie: Movie) {
-        guard let actionTitle = action.title else { return }
-        if actionTitle == "Add New Playlist" {
-            showAddPlaylistAlert()
-        } else {
-            viewModel.addToPlaylist(movie: movie, playlistName: actionTitle) {
-                self.movieListTableView.reloadData()
-            }
-        }
-    }
- 
-
-    
 }
 
-//extension MoviesListViewController: PlaylistBottomSheetDelegate {
-//    func didSelectPlaylist(_ playlist: String) {
-//        viewModel.filterMovies(by: playlist)
-//    }
-//    
-//    func didTapAddNewPlaylist() {
-//        let alert = UIAlertController(title: "New Playlist", message: "Enter a name for your new playlist", preferredStyle: .alert)
-//        alert.addTextField { textField in
-//            textField.placeholder = "Playlist Name"
-//        }
-//        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
-//            guard let playlistName = alert.textFields?.first?.text, !playlistName.isEmpty else { return }
-//            self?.viewModel.addNewPlaylist(named: playlistName)
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//        alert.addAction(saveAction)
-//        alert.addAction(cancelAction)
-//        present(alert, animated: true)
-//    }
-//}
+extension MoviesListViewController: PlaylistBottomSheetDelegate {
+    func didSelectPlaylist(named: String) {
+        guard let movie = selectedMovie else { return }
+        viewModel.addToPlaylist(movie: movie, playlistName: named) { [weak self] in
+            self?.selectedMovie = nil
+            self?.fetchMovies()
+        }
+    }
+    
+    func didAddNewPlaylist(named: String) {
+        viewModel.addNewPlaylist(named: named)
+        let bottomSheetVC = presentedViewController as? PlaylistBottomSheetViewController
+        bottomSheetVC?.playlists = viewModel.getPlaylists()
+    }
+}

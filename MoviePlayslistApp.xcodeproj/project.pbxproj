@@ -22,9 +22,10 @@
 		DC0368C02C1F92F800EBF2AF /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0368BF2C1F92F800EBF2AF /* MovieModel.swift */; };
 		DC0368C22C1F931F00EBF2AF /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0368C12C1F931F00EBF2AF /* MovieService.swift */; };
 		DC0368C42C1F944500EBF2AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0368C32C1F944500EBF2AF /* NetworkManager.swift */; };
-		DC0368C62C1F94AD00EBF2AF /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0368C52C1F94AD00EBF2AF /* MovieViewModel.swift */; };
+		DC0368C62C1F94AD00EBF2AF /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0368C52C1F94AD00EBF2AF /* MoviesViewModel.swift */; };
 		DCA627142C1FEFAC00937507 /* PlaylistBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA627132C1FEFAC00937507 /* PlaylistBottomSheetViewController.swift */; };
-		DCA627162C1FEFF300937507 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA627152C1FEFF300937507 /* PlaylistCell.swift */; };
+		DCD11F052C2481A500141B65 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD11F032C2481A500141B65 /* PlaylistCell.swift */; };
+		DCD11F062C2481A500141B65 /* PlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCD11F042C2481A500141B65 /* PlaylistCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,9 +65,10 @@
 		DC0368BF2C1F92F800EBF2AF /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		DC0368C12C1F931F00EBF2AF /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		DC0368C32C1F944500EBF2AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		DC0368C52C1F94AD00EBF2AF /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		DC0368C52C1F94AD00EBF2AF /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		DCA627132C1FEFAC00937507 /* PlaylistBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBottomSheetViewController.swift; sourceTree = "<group>"; };
-		DCA627152C1FEFF300937507 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		DCD11F032C2481A500141B65 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		DCD11F042C2481A500141B65 /* PlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +132,10 @@
 				DC0368BF2C1F92F800EBF2AF /* MovieModel.swift */,
 				DC0368C12C1F931F00EBF2AF /* MovieService.swift */,
 				DC0368C32C1F944500EBF2AF /* NetworkManager.swift */,
-				DC0368C52C1F94AD00EBF2AF /* MovieViewModel.swift */,
+				DC0368C52C1F94AD00EBF2AF /* MoviesViewModel.swift */,
 				DCA627132C1FEFAC00937507 /* PlaylistBottomSheetViewController.swift */,
-				DCA627152C1FEFF300937507 /* PlaylistCell.swift */,
+				DCD11F032C2481A500141B65 /* PlaylistCell.swift */,
+				DCD11F042C2481A500141B65 /* PlaylistCell.xib */,
 			);
 			path = MoviePlayslistApp;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				DC0368942C1F8A3B00EBF2AF /* LaunchScreen.storyboard in Resources */,
 				DC0368912C1F8A3B00EBF2AF /* Assets.xcassets in Resources */,
 				DC0368BC2C1F8A9600EBF2AF /* MovieTableViewCell.xib in Resources */,
+				DCD11F062C2481A500141B65 /* PlaylistCell.xib in Resources */,
 				DC03688F2C1F8A3A00EBF2AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,8 +295,8 @@
 				DC03688A2C1F8A3A00EBF2AF /* SceneDelegate.swift in Sources */,
 				DC0368BE2C1F8FB700EBF2AF /* Helper.swift in Sources */,
 				DC0368C42C1F944500EBF2AF /* NetworkManager.swift in Sources */,
-				DCA627162C1FEFF300937507 /* PlaylistCell.swift in Sources */,
-				DC0368C62C1F94AD00EBF2AF /* MovieViewModel.swift in Sources */,
+				DCD11F052C2481A500141B65 /* PlaylistCell.swift in Sources */,
+				DC0368C62C1F94AD00EBF2AF /* MoviesViewModel.swift in Sources */,
 				DC0368BB2C1F8A9600EBF2AF /* MovieTableViewCell.swift in Sources */,
 				DCA627142C1FEFAC00937507 /* PlaylistBottomSheetViewController.swift in Sources */,
 				DC0368B82C1F8A6F00EBF2AF /* MoviesListViewController.swift in Sources */,
